@@ -1,31 +1,26 @@
-# Photo gallery
+# Django Project Template
 
-For this project, you are going to build a photo gallery application in Django. You should customize this application with your own features and ideas -- it is a real portfolio-quality project you should make your own. There are some requirements included below, along with ideas to spur your creativity and questions you should answer.
+This project was generated from the Momentum Django project template. This template sets up some minimal changes:
 
-- User registration and login
-    - **Idea**: Consider social login via [django-allauth](https://www.intenct.nl/projects/django-allauth/)
-- Users can create photo galleries
-    - These galleries have a title and photos within them
-    - These galleries have a default photo -- the photo shown when looking at galleries
-    - **Idea**: Make public and private galleries
-    - **Idea**: Can galleries be shared so that multiple users can add photos to them?
-- Users can upload photos
-    - Consider whether photos need to be in a gallery or not. Can they be in multiple galleries? These are questions you need to answer.
-    - Photos should have thumbnails. Look at [Django-Imagekit](https://github.com/matthewwithanm/django-imagekit) and see if it will work for your needs.
-- Users have profiles where you can see their galleries
-    - If you have public and private galleries, then don't show private galleries
-    - What if you can have pictures not in galleries? How does that work?
-    - This doesn't have to look like a list of galleries. This could be a series of updates, Facebook-style, for example.
-    - **Idea**: Users can _pin_ or _spotlight_ photos or galleries to appear first.
-- Users can leave comments on photos
-    - When a user leaves a comment, the owner of the photo should get an email notifying them of that comment. (**Idea**: perhaps you don't get the email if you are both the owner and wrote the comment.)
-- There is an API to interact with galleries and photos. This can be read-only or read-write.
+- [django-extensions](https://django-extensions.readthedocs.io/en/latest/) and [django-debug-toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/) are both installed and set up.
+- [django-environ](https://django-environ.readthedocs.io/en/latest/) is set up and the `DEBUG`, `SECRET_KEY`, and `DATABASES` settings are set by this package.
+- A starting Django app named `core` is provided.
+- There is a custom user model defined in `core.models.User`.
+- There is a `templates/` and a `static/` directory at the top level, both of which are set up to be used.
+- A `.gitignore` file is provided.
+- [Pipenv](https://pipenv.pypa.io/en/latest/) is used to manage dependencies.
 
-In addition to these features, it is required that your application has a front-end to interact with it. This can be wholly Django views, Django views + JavaScript to enhance them (most likely), or wholly JavaScript + an API in Django.
+## Using this template
 
-Your application must be deployed to Heroku and use Amazon S3 to store images. You should use [Mailgun](https://elements.heroku.com/addons/mailgun) to send email in production.
+In an empty directory, run:
 
-## Resources
+```
+django-admin startproject --template=https://github.com/momentumlearn/django-project-template/archive/main.zip --name=Pipfile project .
+pipenv install
+pipenv shell
+cp project/.env.sample project/.env
+./manage.py makemigrations
+./manage.py migrate
+```
 
-- [How to Setup Amazon S3 in a Django project](https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html) - This article is from 2017, and not 100% accurate any more, but is the best around.
-
+If you want to use another directory for your project directory, replace `project` above with the name of your directory.
