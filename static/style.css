@@ -1,0 +1,55 @@
+* {
+    font-style: sans-serif;
+    box-sizing: border-box;
+    margin: .2rem;
+}
+
+header {
+    display: flex;
+    background-color: lightblue;
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.user {
+    background-color: lightcyan;
+    text-align: center;
+}
+
+.more-info,
+.habit_name,
+.habit_target,
+.habit_metric {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+.habbit-body {
+    padding-left: 1rem;
+}
+
+button {
+    background-color: lightblue;
+    border-radius: 25%;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.welcome_header {
+    background-color: lightcyan;
+    text-align: center;
+}

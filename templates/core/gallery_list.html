@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% block content %}
+<h2>List of Galleries</h2>
+
+<div class="flex-container">
+    {% for gallery in gallerys %}
+    <div class="flex-item">
+        <p>{{ gallery.title }} {{ gallery.date }} {{ gallery.is_private }}</p>
+        <p>{{ gallery.photo.image}}</p>
+        
+        {% comment %} <button><a href="{% url 'habit_detail' pk=habit.pk %}">Detail</a></button>
+        <button><a href="{% url 'habit_delete' pk=habit.pk %}">Delete</a></button> {% endcomment %}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

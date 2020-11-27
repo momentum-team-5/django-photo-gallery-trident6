@@ -44,10 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 
     # Third-party
     'debug_toolbar',
     'django_extensions',
+    'imagekit',
 
     # Project-specific
     'core',
@@ -134,6 +136,7 @@ MEDIA_URL = "/media/"
 # Custom user model
 
 AUTH_USER_MODEL = 'core.User'
+LOGIN_REDIRECT_URL = '/gallery_list/'
 
 # Debug toolbar config
 

@@ -14,6 +14,7 @@ werkzeug = "*"
 django-environ = "*"
 django-registration-redux = "*"
 pillow = "*"
+django-imagekit = "*"
 
 [requires]
 python_version = "3.9"
