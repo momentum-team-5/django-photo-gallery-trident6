@@ -24,6 +24,9 @@ urlpatterns = [
     path("accounts/", include("registration.backends.default.urls")),
     path('', views.welcome, name='gallery_welcome'),
     path('gallery_list/', views.gallery_list, name='gallery_list'),
+    path('gallery_detail/<int:pk>/', views.gallery_detail, name='gallery_detail'),
+    path('create/', views.gallery_create, name='gallery_create'),
+    path('gallery/<int:pk>/delete/', views.gallery_delete, name='gallery_delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

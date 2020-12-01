@@ -1,16 +1,15 @@
 {% extends "base.html" %} 
 {% block content %}
-<h2>List of Galleries</h2>
+<h2>Gallery One</h2>
 
 <div class="flex-container">
     {% for gallery in gallerys %}
     <div class="flex-item">
         <p>{{ gallery.title }} {{ gallery.date }} {{ gallery.is_private }}</p>
        {% for photo in gallery.photos.all %}
-        <p><img src='{{ photo.image_small.url }}'/></p>
+        <img src='{{ photo.image_large.url }}'/>
         {% endfor %}
-        <button><a href="{% url 'gallery_detail' pk=gallery.pk %}">Detail</a></button>
-        <button><a href="{% url 'gallery_delete' pk=gallery.pk %}">Delete</a></button>
+        
     </div>
     {% endfor %}
 </div>

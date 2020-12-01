@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from pilkit.processors.resize import ResizeToFill
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFit
 
 class User(AbstractUser):
     pass
@@ -20,6 +23,15 @@ class Photo(models.Model):
     description = models.TextField(blank=True)
     alt_text = models.TextField(blank=True)
     image = models.ImageField(upload_to='media/gallery_images/', null=True)
+    image_large = ImageSpecField(
+        source='image',
+        processors=[ResizeToFit(500, 800, upscale=False)],
+        format='JPEG',
+        options={'quality': 75})
+    image_small = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(200, 200)],
+                                     format='JPEG',
+                                     options={'quality': 75})
     date = models.DateField(auto_now=True)
     default = models.BooleanField(default=True)
 
