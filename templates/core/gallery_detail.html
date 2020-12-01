@@ -1,17 +1,20 @@
-{% extends "base.html" %} 
-{% block content %}
-<h2>Gallery One</h2>
+{% extends 'base.html' %}
 
-<div class="flex-container">
-    {% for gallery in gallerys %}
-    <div class="flex-item">
-        <p>{{ gallery.title }} {{ gallery.date }} {{ gallery.is_private }}</p>
+{%block content%}
+<p class="gallery_title">Gallery Title:  {{gallery.title}}</>
+<p class="gallery_date">Date Created:  {{gallery.date}}</p>
+
        {% for photo in gallery.photos.all %}
-        <img src='{{ photo.image_large.url }}'/>
+        <p><img src='{{ photo.image_large.url }}'/></p>
         {% endfor %}
-        
-    </div>
-    {% endfor %}
-</div>
 
-{% endblock %}
+{% if request.user.is_authenticated and gallery.user == request.user%}
+{% comment %} <button><a href = "{% url 'gallery_update' pk=gallery.pk %}">Gallery Update</a></button> {% endcomment %}
+<button><a href = "{% url 'gallery_delete' pk=gallery.pk %}">Delete</a></button>
+
+{%endif%}
+
+
+
+
+{%endblock%}

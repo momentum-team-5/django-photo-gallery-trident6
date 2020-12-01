@@ -5,8 +5,10 @@ from core.forms import GalleryForm, PhotoForm
 
 
 def welcome(request):
+    if request.user.is_authenticated:
+        return redirect(to="gallery_list")
     return render(request, "core/gallery_welcome.html")
-
+    
 def gallery_list(request):
     gallerys = request.user.gallerys.all()
     return render(request, "core/gallery_list.html", {"gallerys": gallerys})
