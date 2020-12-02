@@ -34,3 +34,21 @@ def gallery_delete(request, pk):
     gallery = get_object_or_404(request.user.gallerys.all(), pk=pk)
     gallery.delete()
     return redirect(to="gallery_list")
+
+def photo_add(request, gallery_pk):
+    gallery = get_object_or_404(request.user.gallerys, pk=gallery_pk)
+
+    if request.method == "POST":
+        form = PhotoForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            photo = form.save(commit=False)
+            photo.gallery = gallery
+            photo.save()
+            return redirect(to="gallery_detail", pk=gallery.pk)
+    else:
+        form = PhotoForm()
+
+    return render(request, "core/photo_add.html", {
+        "form": form,
+        "gallery": gallery
+    })

@@ -17,8 +17,11 @@ import environ
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False),)
+    DEBUG=(bool, False),
+    USE_S3=(bool, False),
+    )
 environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / ...
 BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -132,6 +135,15 @@ STATICFILES_DIRS = [
 
 MEDIA_DIR = BASE_DIR / "media"
 MEDIA_URL = "/media/"
+
+#  AWS S3
+if env('USE_S3'):
+    DEFAULT_FILE_STORAGE = 'gallery.storage.backends.MediaStorage'
+    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+    AWS_DEFAULT_ACL = 'public-read'
+
 
 # Custom user model
 

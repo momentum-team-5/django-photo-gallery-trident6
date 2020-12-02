@@ -9,8 +9,9 @@
         {% endfor %}
 
 {% if request.user.is_authenticated and gallery.user == request.user%}
-{% comment %} <button><a href = "{% url 'gallery_update' pk=gallery.pk %}">Gallery Update</a></button> {% endcomment %}
-<button><a href = "{% url 'gallery_delete' pk=gallery.pk %}">Delete</a></button>
+
+<button><a href = "{% url 'photo_add' gallery_pk=gallery.pk %}">Add Photo</a></button>
+{% comment %} <button><a href = "{% url 'photo_delete' pk=gallery.pk %}">Delete</a></button> {% endcomment %}
 
 {%endif%}
 
