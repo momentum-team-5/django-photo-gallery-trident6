@@ -39,7 +39,7 @@ def photo_add(request, gallery_pk):
     gallery = get_object_or_404(request.user.gallerys, pk=gallery_pk)
 
     if request.method == "POST":
-        form = PhotoForm(data=request.POST, files=request.FILES)
+        form = PhotoForm(data=request.POST, files=request.FILES) # to remove required field
         if form.is_valid():
             photo = form.save(commit=False)
             photo.gallery = gallery
@@ -52,3 +52,8 @@ def photo_add(request, gallery_pk):
         "form": form,
         "gallery": gallery
     })
+
+def photo_delete(request, photo_pk):
+    photo = get_object_or_404(Photo, pk=photo_pk)
+    photo.delete()
+    return redirect(to='gallery_detail', pk=photo.gallery.pk)

@@ -27,7 +27,7 @@ urlpatterns = [
     path('gallery_detail/<int:pk>/', views.gallery_detail, name='gallery_detail'),
     path('create/', views.gallery_create, name='gallery_create'),
     path('gallery/<int:pk>/delete/', views.gallery_delete, name='gallery_delete'),
-    # path('gallery/<int:pk>/delete/', views.photo_delete, name='photo_delete'),
+    path('gallery/<int:photo_pk>/photo_delete/', views.photo_delete, name='photo_delete'),
     path('gallery/<int:gallery_pk>/photo_add/', views.photo_add, name='photo_add'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

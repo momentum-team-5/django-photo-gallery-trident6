@@ -18,4 +18,5 @@ class PhotoForm(forms.ModelForm):
             'description',
             'alt_text',
             'image',
+            'default',
         ]

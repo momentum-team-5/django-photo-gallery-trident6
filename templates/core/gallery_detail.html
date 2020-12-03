@@ -1,21 +1,25 @@
 {% extends 'base.html' %}
 
+
+
 {%block content%}
+
 <p class="gallery_title">Gallery Title:  {{gallery.title}}</>
 <p class="gallery_date">Date Created:  {{gallery.date}}</p>
-
-       {% for photo in gallery.photos.all %}
-        <p><img src='{{ photo.image_large.url }}'/></p>
-        {% endfor %}
-
-{% if request.user.is_authenticated and gallery.user == request.user%}
-
+<p></p>
+{% if request.user.is_authenticated and gallery.user == request.user %}
 <button><a href = "{% url 'photo_add' gallery_pk=gallery.pk %}">Add Photo</a></button>
-{% comment %} <button><a href = "{% url 'photo_delete' pk=gallery.pk %}">Delete</a></button> {% endcomment %}
-
-{%endif%}
-
-
+{% endif %}
+        {% for photo in gallery.photos.all %}
+        <p>{{photo.title}}</p>
+        <p><img src='{{ photo.image_large.url }}'/></p>
+        <p>{{photo.description}} {{photo.date}}</p>
+        <p></p>
+        <p></p>
+                {% if request.user.is_authenticated and gallery.user == request.user %}
+                <button><a href = "{% url 'photo_delete' photo_pk=photo.pk %}">Delete Photo</a></button>
+                {% endif %}
+        {% endfor %}
 
 
 {%endblock%}

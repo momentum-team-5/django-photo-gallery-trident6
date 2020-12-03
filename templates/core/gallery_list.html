@@ -5,9 +5,15 @@
 <div class="flex-container">
     {% for gallery in gallerys %}
     <div class="flex-item">
-        <p>{{ gallery.title }} {{ gallery.date }} {{ gallery.is_private }}</p>
+        <p class="gallery_title">{{gallery.title}}</p>
+        <p class="gallery_date">Date Created:  {{gallery.date}}</p>
+        
        {% for photo in gallery.photos.all %}
+
+        {% if photo.default %}
         <p><img src='{{ photo.image_small.url }}'/></p>
+        {% endif %}
+
         {% endfor %}
         <button><a href="{% url 'gallery_detail' pk=gallery.pk %}">Detail</a></button>
         <button><a href="{% url 'gallery_delete' pk=gallery.pk %}">Delete</a></button>
